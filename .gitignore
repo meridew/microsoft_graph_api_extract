@@ -1,0 +1,14 @@
+# PowerShell
+*.ps1xml
+
+# IDE
+.vscode/
+*.code-workspace
+
+# Output
+intune-dump/
+*.log
+
+# Secrets - never commit these!
+*secret*
+*credential*

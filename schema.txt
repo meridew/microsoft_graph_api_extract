@@ -1,0 +1,159 @@
+amespace   : microsoft.graph.identityGovernance
+xmlns       : http://docs.oasis-open.org/odata/ns/edm
+EnumType    : {activationTaskScopeType, activationUserScopeType, customTaskExtensionOperationStatus, lifecycleTaskCategory...}
+EntityType  : {workflowBase, workflow, lifecycleWorkflowsContainer, userProcessingResult...}
+ComplexType : {activationScope, activateGroupScope, activateProcessingResultScope, activateRunScope...}
+Action      : {activate, activateWithScope, createNewVersion, restore...}
+Function    : {summary, summary, summary, topTasksProcessedSummary...}
+Annotations : {Annotations, Annotations, Annotations, Annotations...}
+
+Namespace       : microsoft.graph
+Alias           : graph
+xmlns           : http://docs.oasis-open.org/odata/ns/edm
+EnumType        : {aggregationPeriod, aggregationWindow, applicationKeyOrigin, applicationKeyType...}
+EntityType      : {entity, directoryObject, servicePrincipal, agentIdentity...}
+ComplexType     : {customExtensionAuthenticationConfiguration, azureAdPopTokenAuthentication, azureAdTokenAuthentication,
+                  customExtensionCallbackConfiguration...}
+Term            : {applyBusinessAvailabilityRules, legacyName, downloadUrl, sourceUrl...}
+Action          : {createPasswordSingleSignOnCredentials, deletePasswordSingleSignOnCredentials, deletePasswordSingleSignOnCredentials,  
+                  deletePasswordSingleSignOnCredentials...}
+Function        : {getAzureADApplicationSignInSummary, getCredentialUsageSummary, getCredentialUserRegistrationCount,
+                  getRelyingPartyDetailedSummary...}
+EntityContainer : EntityContainer
+
+Namespace   : microsoft.graph.agentic
+Alias       : agentic
+xmlns       : http://docs.oasis-open.org/odata/ns/edm
+EnumType    : EnumType
+ComplexType : ComplexType
+
+Namespace   : microsoft.graph.healthMonitoring
+xmlns       : http://docs.oasis-open.org/odata/ns/edm
+EnumType    : {alertState, alertType, category, enrichmentState...}
+EntityType  : {healthMonitoringRoot, alert, alertConfiguration}
+ComplexType : {resourceImpactSummary, directoryObjectImpactSummary, applicationImpactSummary, deviceImpactSummary...}
+
+Namespace   : microsoft.graph.cloudLicensing
+xmlns       : http://docs.oasis-open.org/odata/ns/edm
+EnumType    : EnumType
+ComplexType : {groupCloudLicensing, userCloudLicensing, service}
+EntityType  : EntityType
+
+Namespace   : microsoft.graph.ediscovery
+xmlns       : http://docs.oasis-open.org/odata/ns/edm
+EnumType    : {additionalDataOptions, caseAction, caseOperationStatus, caseStatus...}
+EntityType  : {ediscoveryroot, caseOperation, addToReviewSetOperation, reviewSet...}
+ComplexType : {ocrSettings, redundancyDetectionSettings, topicModelingSettings}
+Action      : {activate, applyHold, applyHold, applyHold...}
+Function    : {asHierarchy, getDownloadUrl}
+
+Namespace   : microsoft.graph.security
+Alias       : self
+xmlns       : http://docs.oasis-open.org/odata/ns/edm
+EnumType    : {additionalDataOptions, additionalOptions, caseAction, caseOperationStatus...}
+EntityType  : {security, casesRoot, dataDiscoveryRoot, identityContainer...}
+ComplexType : {exportFileMetadata, ocrSettings, redundancyDetectionSettings, reportFileMetadata...}
+Action      : {activate, activate, applyHold, applyHold...}
+Function    : {run, asHierarchy, getDownloadUrl, aggregatedAppsDetails...}
+
+Namespace   : microsoft.graph.deviceManagement
+xmlns       : http://docs.oasis-open.org/odata/ns/edm
+EnumType    : {aggregationType, alertRuleTemplate, alertStatusType, conditionCategory...}
+EntityType  : {monitoring, alertRecord, alertRule}
+ComplexType : {alertImpact, notificationChannel, notificationReceiver, portalNotification...}
+Action      : {changeAlertRecordsPortalNotificationAsSent, setPortalNotificationAsSent}
+Function    : Function
+
+Namespace   : microsoft.graph.termStore
+xmlns       : http://docs.oasis-open.org/odata/ns/edm
+EnumType    : {relationType, termGroupScope}
+EntityType  : {store, group, set, relation...}
+ComplexType : {localizedDescription, localizedLabel, localizedName}
+
+Namespace   : microsoft.graph.networkaccess
+xmlns       : http://docs.oasis-open.org/odata/ns/edm
+EnumType    : {accessType, aggregationFilter, alertSeverity, alertType...}
+ComplexType : {aiAgent, aiAgentDetails, alertAction, alertFrequencyPoint...}
+EntityType  : {alert, policy, filteringPolicy, connection...}
+Function    : {crossTenantAccessReport, destinationReport, deviceReport, entitiesSummaries...}
+Action      : {onboard, updatePolicyRules}
+
+Namespace   : microsoft.graph.callRecords
+xmlns       : http://docs.oasis-open.org/odata/ns/edm
+EnumType    : {audioCodec, callType, clientPlatform, failureStage...}
+EntityType  : {callRecord, participantBase, organizer, participant...}
+ComplexType : {administrativeUnitInfo, callLogRow, userAgent, clientUserAgent...}
+Function    : {getDirectRoutingCalls, getPstnBlockedUsersLog, getPstnCalls, getPstnOnlineMeetingDialoutReport...}
+
+Namespace   : microsoft.graph.teamsAdministration
+Alias       : teamsAdministration
+xmlns       : http://docs.oasis-open.org/odata/ns/edm
+EnumType    : {accountType, assignmentCategory, assignmentType, activationState...}
+EntityType  : {teamsAdminRoot, teamsPolicyAssignment, teamsUserConfiguration, telephoneNumberManagementRoot...}
+ComplexType : {assignedTelephoneNumber, effectivePolicyAssignment, policyAssignment, telephoneNumberLongRunningOperationDetails}
+Action      : {assign, unassign, assignNumber, unassignNumber...}
+Function    : Function
+
+Namespace   : microsoft.graph.industryData
+xmlns       : http://docs.oasis-open.org/odata/ns/edm
+EnumType    : {additionalClassGroupAttributes, additionalUserAttributes, apiFormat, filterOptions...}
+EntityType  : {industryDataRoot, referenceDefinition, roleGroup, provisioningFlow...}
+ComplexType : {additionalClassGroupOptions, additionalUserOptions, adminUnitCreationOptions, aggregatedInboundStatistics...}
+Action      : {reset, start, validate}
+Function    : {getStatistics, getStatistics, getUploadSession}
+
+Namespace   : microsoft.graph.managedTenants
+xmlns       : http://docs.oasis-open.org/odata/ns/edm
+EnumType    : {alertSeverity, alertStatus, delegatedPrivilegeStatus, managementActionStatus...}
+EntityType  : {managedTenant, aggregatedPolicyCompliance, appPerformance, auditEvent...}
+ComplexType : {addLogRequest, alertData, alertDataReferenceString, alertLogContent...}
+Action      : {addUserInputLog, apply, offboardTenant, resetTenantOnboardingStatus...}
+
+Namespace   : microsoft.graph.partners.billing
+xmlns       : http://docs.oasis-open.org/odata/ns/edm
+EnumType    : {attributeSet, billingPeriod}
+EntityType  : {billing, azureUsage, billedUsage, unbilledUsage...}
+ComplexType : ComplexType
+Action      : {export, export, export, export}
+
+Namespace   : microsoft.graph.partner.security
+xmlns       : http://docs.oasis-open.org/odata/ns/edm
+EnumType    : {securityAlertConfidence, securityAlertResolvedReason, securityAlertSeverity, securityAlertStatus...}
+EntityType  : {partnerSecurity, partnerSecurityAlert, partnerSecurityScore, securityRequirement...}
+ComplexType : {activityLog, additionalDataDictionary, affectedResource, customerMfaInsight}
+
+Namespace   : microsoft.graph.search
+xmlns       : http://docs.oasis-open.org/odata/ns/edm
+EnumType    : EnumType
+EntityType  : {searchAnswer, acronym, bookmark, qna}
+ComplexType : {answerKeyword, answerVariant, identity, identitySet}
+
+Namespace   : microsoft.graph.security.securityCopilot
+Alias       : securityCopilot
+xmlns       : http://docs.oasis-open.org/odata/ns/edm
+EnumType    : {evaluationResultType, evaluationState, pluginAuthTypes, pluginCatalogScope...}
+EntityType  : {workspace, evaluation, plugin, prompt...}
+ComplexType : {collection_pluginSetting, pluginSetting, errorDetails, evaluationResult...}
+
+Namespace   : microsoft.graph.externalConnectors
+xmlns       : http://docs.oasis-open.org/odata/ns/edm
+EnumType    : {accessType, aclType, connectionOperationStatus, connectionState...}
+EntityType  : {external, externalConnection, connectionOperation, connectionQuota...}
+ComplexType : {acl, activitySettings, urlToItemResolverBase, complianceSettings...}
+Action      : Action
+
+Namespace   : microsoft.graph.windowsUpdates
+xmlns       : http://docs.oasis-open.org/odata/ns/edm
+EnumType    : {azureADDeviceRegistrationErrorReason, bodyType, cveSeverityLevel, deploymentStateReasonValue...}
+EntityType  : {catalog, deploymentAudience, deployment, product...}
+ComplexType : {approvalRule, assignedGroup, updatableAssetError, azureADDeviceRegistrationError...}
+Action      : {addMembers, addMembersById, removeMembers, removeMembersById...}
+Function    : {findByCatalogId, findByKbNumber, getKnownIssuesByTimeRange}
+
+Namespace   : microsoft.graph.internal
+xmlns       : http://docs.oasis-open.org/odata/ns/edm
+ComplexType : {notificationStatusCount, notificationSurfaceStatus}
+
+Namespace : microsoft.graph.copilot
+xmlns     : http://docs.oasis-open.org/odata/ns/edm
+Action    : {chat, chatOverStream, deleteByThreadId}
