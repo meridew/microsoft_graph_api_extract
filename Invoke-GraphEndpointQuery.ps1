@@ -23,10 +23,8 @@ else
     Connect-MgGraph -NoWelcome
 }
 
-$metaDataUri = "https://graph.microsoft.com/$ApiVersion/`$metadata" 
-
 # Fetch schema and discover endpoints
-$meta = [xml](Invoke-MgGraphRequest -Uri $metaDataUri -OutputType HttpResponseMessage).Content.ReadAsStringAsync().Result
+$meta = [xml](Invoke-MgGraphRequest -Uri "https://graph.microsoft.com/$ApiVersion/`$metadata" -OutputType HttpResponseMessage).Content.ReadAsStringAsync().Result
 $schema = $meta.edmx.DataServices.Schema | Where-Object Namespace -eq 'microsoft.graph'
 $singleton = $schema.EntityContainer.Singleton | Where-Object Name -eq $Endpoint
 
@@ -35,9 +33,9 @@ if (-not $singleton) { throw "Endpoint '$Endpoint' not found" }
 $typeName = $singleton.Type -replace '^microsoft\.graph\.', ''
 $navProps = ($schema.EntityType | Where-Object Name -eq $typeName).NavigationProperty
 
-$uris = $navProps | 
+$uris = @($navProps | 
     Where-Object { $_.Attributes['Type'].Value -match '^Collection' } |
-    ForEach-Object { @{ Name = $_.Name; Uri = "/$ApiVersion/$Endpoint/$($_.Name)" } }
+    ForEach-Object { @{ Name = $_.Name; Uri = "/$ApiVersion/$Endpoint/$($_.Name)" } })
 
 # Fetch data scriptblock
 $fetch = {
@@ -57,65 +55,57 @@ $fetch = {
         {
             $r = Invoke-MgGraphRequest -Uri $Uri -OutputType PSObject -ErrorAction Stop
             if ($r.value) { $data += $r.value }
-            $Uri = $r.PSObject.Properties['@odata.nextLink']?.Value
+            $nextLink = $r.PSObject.Properties['@odata.nextLink']
+            $Uri = if ($nextLink) { $nextLink.Value } else { $null }
         } while ($Uri)
     }
-    catch
-    {
-        # Return nothing on error - job will have no data
-    }
+    catch { }
     $data
 }
 
-$result = [PSCustomObject]@{}
+$result = @{}
+$total = $uris.Count
+$completed = 0
 
 if ($useParallel)
 {
-    $total = $uris.Count
-    $i = 0
-    $jobs = $uris | ForEach-Object {
-        Write-Progress -Activity "Starting jobs" -Status "$i of $total" -PercentComplete (($i++ / $total) * 100)
-        Start-Job -Name $_.Name -ScriptBlock $fetch -ArgumentList $_.Uri, $AppId, $TenantId, $Secret
+    # Start jobs with progress
+    $jobs = for ($i = 0; $i -lt $total; $i++)
+    {
+        Write-Progress -Activity "Starting jobs" -Status "$i of $total" -PercentComplete (($i / $total) * 100)
+        Start-Job -Name $uris[$i].Name -ScriptBlock $fetch -ArgumentList $uris[$i].Uri, $AppId, $TenantId, $Secret
     }
+    Write-Progress -Activity "Starting jobs" -Completed
     
+    # Monitor jobs
     while ($jobs.State -match 'Running')
     {
         $running = @($jobs | Where-Object State -eq 'Running').Count
-        $completed = @($jobs | Where-Object State -eq 'Completed').Count
-        $failed = @($jobs | Where-Object State -eq 'Failed').Count
-        Write-Progress -Activity "Fetching $Endpoint" -Status "Running: $running | Completed: $completed | Failed: $failed"
+        $done = @($jobs | Where-Object State -eq 'Completed').Count
+        Write-Progress -Activity "Fetching $Endpoint" -Status "Running: $running | Done: $done of $total"
         Start-Sleep -Milliseconds 500
     }
     Write-Progress -Activity "Fetching $Endpoint" -Completed
     
-    $jobs | ForEach-Object {
-        if ($_.HasMoreData) 
-        { 
-            $result | Add-Member -NotePropertyName $_.Name -NotePropertyValue @(Receive-Job $_) 
-        }
-        Remove-Job $_
+    # Collect results
+    foreach ($job in $jobs)
+    {
+        if ($job.HasMoreData) { $result[$job.Name] = @(Receive-Job $job) }
+        Remove-Job $job
     }
 }
 else
 {
-    foreach ($u in $uris)
+    # Sequential with progress
+    for ($i = 0; $i -lt $total; $i++)
     {
-        try
-        {
-            $data = @(& $fetch $u.Uri)
-
-            if ($data) 
-            { 
-                $result | Add-Member -NotePropertyName $u.Name -NotePropertyValue $data 
-            }
-        }
-        catch 
-        { 
-            Write-Warning "$($u.Name): $($_.Exception.Message)" 
-        }
+        $u = $uris[$i]
+        Write-Progress -Activity "Fetching $Endpoint" -Status "$($u.Name)" -PercentComplete (($i / $total) * 100)
+        
+        $data = @(& $fetch $u.Uri)
+        if ($data.Count -gt 0) { $result[$u.Name] = $data }
     }
+    Write-Progress -Activity "Fetching $Endpoint" -Completed
 }
 
-Write-Output $result
-
-Get-Job | Stop-Job -PassThru | Remove-Job
+[PSCustomObject]$result
