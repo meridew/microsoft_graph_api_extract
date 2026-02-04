@@ -1,0 +1,77 @@
+SUCCESS: resourceOperations: Retrieved 255 records.
+ERROR: userExperienceAnalyticsAnomalyCorrelationGroupOverview: ERROR: Response status code does not indicate success: Forbidden (Forbidden).
+ERROR: deviceShellScripts: ERROR: Response status code does not indicate success: Forbidden (Forbidden).
+ERROR: deviceComplianceScripts: ERROR: Response status code does not indicate success: Forbidden (Forbidden).
+ERROR: dataSharingConsents: ERROR: Response status code does not indicate success: BadRequest (Bad Request).
+SUCCESS: deviceConfigurations: Retrieved 1 records.
+ERROR: userExperienceAnalyticsScoreHistory: ERROR: Response status code does not indicate success: BadRequest (Bad Request).
+ERROR: hardwarePasswordDetails: ERROR: Response status code does not indicate success: Forbidden (Forbidden).
+SUCCESS: reusableSettings: Retrieved 31 records.
+ERROR: templateSettings: ERROR: Response status code does not indicate success: BadRequest (Bad Request).
+SUCCESS: androidForWorkEnrollmentProfiles: Retrieved 1 records.
+ERROR: userExperienceAnalyticsAnomaly: ERROR: Response status code does not indicate success: Forbidden (Forbidden).
+ERROR: serviceNowConnections: ERROR: Response status code does not indicate success: Unauthorized (Unauthorized).
+SUCCESS: configurationCategories: Retrieved 1003 records.
+SUCCESS: notificationMessageTemplates: Retrieved 1 records.
+SUCCESS: detectedApps: Retrieved 330 records.
+SUCCESS: configurationPolicyTemplates: Retrieved 59 records.
+SUCCESS: androidDeviceOwnerEnrollmentProfiles: Retrieved 1 records.
+ERROR: exchangeOnPremisesPolicies: ERROR: Response status code does not indicate success: BadRequest (Bad Request).
+ERROR: userExperienceAnalyticsBatteryHealthDeviceAppImpact: ERROR: Response status code does not indicate success: Forbidden (Forbidden).
+ERROR: zebraFotaArtifacts: ERROR: Response status code does not indicate success: Forbidden (Forbidden).
+SUCCESS: deviceManagementPartners: Retrieved 1 records.
+SUCCESS: roleScopeTags: Retrieved 1 records.
+ERROR: userExperienceAnalyticsRemoteConnection: ERROR: Response status code does not indicate success: InternalServerError (Internal Server Error).
+SUCCESS: configurationSettings: Retrieved 17620 records.
+ERROR: hardwarePasswordInfo: ERROR: Response status code does not indicate success: BadRequest (Bad Request).
+ERROR: userExperienceAnalyticsImpactingProcess: ERROR: Response status code does not indicate success: InternalServerError (Internal Server Error).
+ERROR: cloudCertificationAuthority: ERROR: Response status code does not indicate success: Forbidden (Forbidden).
+ERROR: userExperienceAnalyticsBatteryHealthDeviceRuntimeHistory: ERROR: Response status code does not indicate success: Forbidden (Forbidden).
+ERROR: userExperienceAnalyticsCategories: ERROR: Response status code does not indicate success: InternalServerError (Internal Server Error).
+ERROR: userExperienceAnalyticsBatteryHealthOsPerformance: ERROR: Response status code does not indicate success: Forbidden (Forbidden).
+SUCCESS: groupPolicyDefinitionFiles: Retrieved 363 records.
+ERROR: cloudCertificationAuthorityLeafCertificate: ERROR: Response status code does not indicate success: NotFound (Not Found).
+ERROR: operationApprovalRequests: ERROR: Response status code does not indicate success: BadRequest (Bad Request).
+SUCCESS: complianceCategories: Retrieved 5 records.
+SUCCESS: remoteAssistancePartners: Retrieved 1 records.
+ERROR: userExperienceAnalyticsAnomalyDevice: ERROR: Response status code does not indicate success: Forbidden (Forbidden).
+ERROR: userExperienceAnalyticsBatteryHealthDevicePerformance: ERROR: Response status code does not indicate success: Forbidden (Forbidden).
+SUCCESS: settingDefinitions: Retrieved 4506 records.
+ERROR: deviceCustomAttributeShellScripts: ERROR: Response status code does not indicate success: Forbidden (Forbidden).
+SUCCESS: complianceSettings: Retrieved 21 records.
+ERROR: userExperienceAnalyticsDeviceTimelineEvent: ERROR: Response status code does not indicate success: Forbidden (Forbidden).
+SUCCESS: remoteActionAudits: Retrieved 1 records.
+SUCCESS: auditEvents: Retrieved 107 records.
+SUCCESS: windowsAutopilotDeploymentProfiles: Retrieved 1 records.
+ERROR: chromeOSOnboardingSettings: ERROR: Response status code does not indicate success: Unauthorized (Unauthorized).
+ERROR: deviceManagementScripts: ERROR: Response status code does not indicate success: Forbidden (Forbidden).
+ERROR: zebraFotaDeployments: ERROR: Response status code does not indicate success: Forbidden (Forbidden).
+SUCCESS: intuneBrandingProfiles: Retrieved 1 records.
+SUCCESS: microsoftTunnelHealthThresholds: Retrieved 13 records.
+ERROR: managedDeviceWindowsOSImages: ERROR: Response status code does not indicate success: Unauthorized (Unauthorized).
+SUCCESS: templates: Retrieved 16 records.
+SUCCESS: deviceCompliancePolicySettingStateSummaries: Retrieved 3 records.
+SUCCESS: managedDeviceEncryptionStates: Retrieved 4 records.
+ERROR: androidManagedStoreAppConfigurationSchemas: ERROR: Response status code does not indicate success: BadRequest (Bad Request).
+ERROR: templateInsights: ERROR: Response status code does not indicate success: BadRequest (Bad Request).
+ERROR: userExperienceAnalyticsBatteryHealthModelPerformance: ERROR: Response status code does not indicate success: Forbidden (Forbidden).
+SUCCESS: windowsUpdateCatalogItems: Retrieved 115 records.
+SUCCESS: complianceManagementPartners: Retrieved 21 records.
+ERROR: configManagerCollections: ERROR: Response status code does not indicate success: InternalServerError (Internal Server Error).
+SUCCESS: windowsMalwareInformation: Retrieved 12 records.
+SUCCESS: managedDevices: Retrieved 4 records.
+ERROR: exchangeConnectors: ERROR: Response status code does not indicate success: NotImplemented (Not Implemented).
+ERROR: deviceHealthScripts: ERROR: Response status code does not indicate success: Forbidden (Forbidden).
+ERROR: userExperienceAnalyticsWorkFromAnywhereMetrics: ERROR: Response status code does not indicate success: BadRequest (Bad Request).
+SUCCESS: groupPolicyCategories: Retrieved 1345 records.
+ERROR: androidForWorkAppConfigurationSchemas: ERROR: Response status code does not indicate success: BadRequest (Bad Request).
+ERROR: certificateConnectorDetails: ERROR: Response status code does not indicate success: BadRequest (Bad Request).
+SUCCESS: deviceCompliancePolicies: Retrieved 1 records.
+SUCCESS: roleDefinitions: Retrieved 9 records.
+SUCCESS: deviceEnrollmentConfigurations: Retrieved 5 records.
+ERROR: mobileAppTroubleshootingEvents: ERROR: Response status code does not indicate success: BadRequest (Bad Request).
+ERROR: userExperienceAnalyticsBatteryHealthAppImpact: ERROR: Response status code does not indicate success: Forbidden (Forbidden).
+SUCCESS: groupPolicyConfigurations: Retrieved 1 records.
+SUCCESS: groupPolicyDefinitions: Retrieved 8065 records.
+SUCCESS: windowsAutopilotDeviceIdentities: Retrieved 3 records.
+SUCCESS: categories: Retrieved 191 records.

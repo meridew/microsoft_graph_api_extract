@@ -49,23 +49,27 @@ $fetch = {
     }
     
     $data = @()
+
     try
     {
         do
         {
             $r = Invoke-MgGraphRequest -Uri $Uri -OutputType PSObject -ErrorAction Stop
-            if ($r.value) { $data += $r.value }
+            if ($r.value) { $data += [pscustomobject]$r.value }
             $nextLink = $r.PSObject.Properties['@odata.nextLink']
             $Uri = if ($nextLink) { $nextLink.Value } else { $null }
         } while ($Uri)
     }
-    catch { }
+    catch
+    {
+        $data = "ERROR: $($_.Exception.Message)"
+    }
+
     $data
 }
 
 $result = @{}
 $total = $uris.Count
-$completed = 0
 
 if ($useParallel)
 {
@@ -90,7 +94,7 @@ if ($useParallel)
     # Collect results
     foreach ($job in $jobs)
     {
-        if ($job.HasMoreData) { $result[$job.Name] = @(Receive-Job $job) }
+        $result[$job.Name] = @(Receive-Job $job)
         Remove-Job $job
     }
 }
@@ -103,9 +107,11 @@ else
         Write-Progress -Activity "Fetching $Endpoint" -Status "$($u.Name)" -PercentComplete (($i / $total) * 100)
         
         $data = @(& $fetch $u.Uri)
-        if ($data.Count -gt 0) { $result[$u.Name] = $data }
+        $result[$u.Name] = $data
     }
     Write-Progress -Activity "Fetching $Endpoint" -Completed
 }
 
-[PSCustomObject]$result
+Get-Job | Stop-Job -passThru | Remove-Job -Force
+
+return $result
